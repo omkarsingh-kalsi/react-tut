@@ -6,6 +6,7 @@ import About from "./About"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Alert from './Alert'
+
 function App() {
   const [mode,setmode]=useState('light')
   const [alert, setalert]=useState(null)
@@ -29,7 +30,7 @@ const toggleMode=()=>{
  if (mode === 'light') {
   setmode('dark');
   document.body.style.backgroundColor = '#274b80'
-  showalert('enable dark mode','Success')
+  showalert('enable dark mode','success')
   document.title = 'dark mode'
   setInterval(()=>{
     document.title = 'dark mode is on' 
@@ -42,7 +43,7 @@ const toggleMode=()=>{
  } else {
   setmode('light');
   document.body.style.backgroundColor = 'white'
-  showalert('enable light mode','Success')
+  showalert('enable light mode','success')
   document.title = 'light mode'
  }
  console.log("light")
@@ -50,14 +51,15 @@ const toggleMode=()=>{
 
   return (
   <>
-  <Router>
+  {/*<Router>*/}
    <Navbar mode={mode} toggleMode={toggleMode}/>
    <Alert alert={alert}/>
-      <Routes>
+   <Textform showalert={showalert}/>
+     {/* <Routes>
         <Route exact path="/about" element={<About />} />
         <Route exact path="/textform" element={<Textform/>} />
       </Routes>
-  </Router>
+  </Router>*/}
    </>
   )
   

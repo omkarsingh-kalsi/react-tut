@@ -5,11 +5,13 @@ function Textform(props) {
    // console.log("you have clicked on uppercase" + text);
     let newText = text.toUpperCase();
     setText(newText);
+    props.showalert('converted to uppercase' ,'success')
   };
   const handelloclick = () => {
    // console.log("you have clicked on uppercase" + text);
     let newText = text.toLowerCase();
     setText(newText);
+    props.showalert('converted to lowercase','success')
   };
   const handelonchange = (event) => {
     setText(event.target.value);
@@ -18,20 +20,14 @@ function Textform(props) {
   const handelctclick = () => {
     let newText = ""
     setText(newText);
+    props.showalert('cleared text' ,'success')
   };
 
-  const handeltrclick = () =>{
-    console.log("clicked")
+  const handeltrclick = () =>{ 
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showalert('space removed','success')
   };
-
-  const handelUDclick = () =>{
-    console.log("clickedd")
-    let newText = z;
-    setText(newText);
-    
-  }
 
   let [text, setText] = useState("");
 
@@ -63,9 +59,6 @@ function Textform(props) {
         <button className="btn btn-primary  mx-1" onClick={handeltrclick}>
           Remove Space
         </button>
-        <button className="btn btn-primary  mx-1" onClick={handelUDclick}>
-          undo
-        </button>
       </div>
       <div className="container">
         <h2>Your text summary</h2>
@@ -75,6 +68,7 @@ function Textform(props) {
         <p>{0.008 * text.split(" ").length} Minutes to read</p>
         <h2>Preview</h2>
         <p>{text}</p>
+        
       </div>
     </div>
   );
